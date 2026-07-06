@@ -1,0 +1,11 @@
+# PHP Dependencies
+/vendor/
+
+# User Uploads / Temp Downloads
+/downloads/*.pdf
+
+# IDEs and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
