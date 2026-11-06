@@ -1,0 +1,7 @@
+.git
+.env*
+vendor
+uploads/*
+downloads/*
+docs
+roroferry.sql
