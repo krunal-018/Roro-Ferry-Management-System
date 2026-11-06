@@ -1,3 +1,9 @@
+<?php
+if (getenv('ENABLE_LEGACY_SANDBOX_CHECKOUT') !== '1') {
+    http_response_code(503);
+    exit('Checkout is unavailable in this demo.');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +17,7 @@
 	<h1 align="center">Payment Page</h1>	
 
 	<?php  
-		$secretkey = "YOUR_CASHFREE_SECRET_KEY";
+		$secretkey = getenv('CASHFREE_SECRET_KEY') ?: '';
 		$orderId = $_POST["orderId"];
 		$orderAmount = $_POST["orderAmount"];
 		$referenceId = $_POST["referenceId"];

@@ -9,3 +9,10 @@
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local secrets and runtime uploads
+.env
+.env.*
+!.env.example
+/uploads/*
+!/uploads/.gitkeep

@@ -1,3 +1,9 @@
+<?php
+if (getenv('ENABLE_LEGACY_SANDBOX_CHECKOUT') !== '1') {
+    http_response_code(503);
+    exit('Checkout is unavailable in this demo.');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +15,9 @@
 
 
 <?php 
-$mode = "TEST"; //<------------ Change to TEST for test server, PROD for production
 
 extract($_POST);
-  $secretKey = "YOUR_CASHFREE_SECRET_KEY";
+  $secretKey = getenv('CASHFREE_SECRET_KEY') ?: '';
   $postData = array( 
   "appId" => $appId, 
   "orderId" => $orderId, 
@@ -33,11 +38,7 @@ foreach ($postData as $key => $value){
 $signature = hash_hmac('sha256', $signatureData, $secretKey,true);
 $signature = base64_encode($signature);
 
-if ($mode == "PROD") {
-  $url = "https://www.cashfree.com/checkout/post/submit";
-} else {
-  $url = "https://test.cashfree.com/billpay/checkout/post/submit";
-}
+$url = "https://test.cashfree.com/billpay/checkout/post/submit";
 
 ?>
   <form action="<?php echo $url; ?>" name="frm1" method="post">

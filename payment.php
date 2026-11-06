@@ -1,4 +1,9 @@
 <?php
+if (getenv('ENABLE_LEGACY_SANDBOX_CHECKOUT') !== '1') {
+    http_response_code(503);
+    exit('Checkout is unavailable in this demo.');
+}
+
 	ob_start();
 ?>
 
@@ -27,8 +32,8 @@ $amount = (float)$booking['total_amount']; // Ensure it's a float
 $orderId = "RoRo_" . time(); // Generate a unique order ID
 
 // Cashfree API credentials
-$cashfreeAppId = "YOUR_CASHFREE_APP_ID";  // Replace with your Cashfree App ID
-$cashfreeSecretKey = "YOUR_CASHFREE_SECRET_KEY";  // Replace with your Cashfree Secret Key
+$cashfreeAppId = getenv('CASHFREE_APP_ID') ?: '';
+$cashfreeSecretKey = getenv('CASHFREE_SECRET_KEY') ?: '';
 ?>
 
 <!DOCTYPE html>

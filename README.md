@@ -11,7 +11,7 @@ A comprehensive and robust web-based **Ro-Ro (Roll-on/Roll-off) Ferry Ticket Boo
 - **Trip Search & Booking**: Real-time checking of ferry trip availability, schedules, and pricing.
 - **Interactive Seat Selection**: Graphical seat selection interface for custom seating arrangements.
 - **Onboard Packages & Facilities**: Booking of special cabins, hotels, gym, pool, club, cinema hall, and game zone access.
-- **Secure Payments**: Integration with the Cashfree payment gateway.
+- **Checkout**: Legacy Cashfree sandbox integration, disabled by default.
 - **PDF Ticket Generation**: Automatically generates a downloadable PDF ticket with QR codes upon successful payment.
 - **Contact Support**: Dedicated contact form with automated admin notification.
 
@@ -81,42 +81,19 @@ Clone this repository to your local web server directory (e.g., `C:/xampp/htdocs
 git clone https://github.com/krunal-018/Roro-Ferry-Management-System.git
 ```
 
-### 3. Database Configuration
-1. Open **phpMyAdmin** (`http://localhost/phpmyadmin`).
-2. Create a new database named `roroferry`.
-3. Import the file `roroferry.sql` located at the root of the project.
-4. Verify database settings in `inc/connection.php`:
-   ```php
-   $con = mysqli_connect("localhost", "root", "", "roroferry");
-   ```
+### 3. Database and dependencies
 
-### 4. Install PHP Dependencies
-Open a terminal inside the project root directory and run:
-```bash
-composer install
-```
-*This will generate the `vendor/` directory and install `dompdf`, `phpmailer`, `cashfree`, and `qr-code` libraries.*
+Create an empty MySQL database named `roroferry`, then import `roroferry.sql`. This seed includes catalog, trip, and seat data. It omits user accounts, administrator credentials, and booking history. Run `composer install` from the project root.
 
-### 5. SMTP & Mail Setup
-Configure SMTP settings in `inc/config.php` to enable email verification and contact forms:
-```php
-define("SMTP_HOST", "smtp.gmail.com");
-define("SMTP_PORT", 587);
-define("SMTP_FROM", "your-email@gmail.com");
-define("SMTP_FROM_NAME", "Roro Ferry Services");
-define("SMTP_USERNAME", "your-email@gmail.com");
-define("SMTP_PASSWORD", "your-gmail-app-password"); // Google App Password (NOT account password)
-```
+### 4. Configure the PHP process
 
----
+| Purpose | Environment variables |
+| --- | --- |
+| Database | `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` |
+| Email | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_FROM`, `SMTP_FROM_NAME` |
 
-## 🔐 Credentials for Testing
+Set these in the environment of Apache or PHP. Provision admin access separately in your local database. The included seed contains no login credentials.
 
-### 🔑 Admin Access
-Go to the header log in modal, select the **Admin** role, and use the following:
-* **Email/Username**: `nenish@gmail.com`
-* **Password**: `nenish123`
+Checkout and the legacy payment callback routes are disabled by default. Keep `ENABLE_LEGACY_SANDBOX_CHECKOUT` unset on public hosts. The legacy checkout is for isolated local sandbox testing only, with `CASHFREE_APP_ID` and `CASHFREE_SECRET_KEY` supplied from a test account.
 
-### 👤 Test User Access
-* **Email**: `krunalkaklotar2283@gmail.com`
-* **Password**: *Available inside database users table*
+Before publishing, rotate credentials that appeared in earlier commits and review the tracked project reports and assets. Old commits can still contain the original data.

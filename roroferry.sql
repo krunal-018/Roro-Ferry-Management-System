@@ -36,8 +36,7 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`username`, `password`) VALUES
-('nenish@gmail.com', 'nenish123');
+
 
 -- --------------------------------------------------------
 
@@ -58,12 +57,13 @@ CREATE TABLE `admin_contact` (
   `iframe` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `admin_contact` (`id`) VALUES (1);
+
 --
 -- Dumping data for table `admin_contact`
 --
 
-INSERT INTO `admin_contact` (`id`, `address`, `gmap`, `pn1`, `pn2`, `email`, `fb`, `insta`, `tw`, `iframe`) VALUES
-(1, '102, International Business Hub, Vesu, Surat', 'https://maps.app.goo.gl/edZJ2p5cthX7gSkw7', 917069385883, 919724481146, 'support@roroferry.com', 'https://www.facebook.com/dgseaconnect/photos/', 'https://www.instagram.com/reel/CwHy2n2IC_I/', 'https://x.com/DGSeaconnect?s=09Twitter.com', 'https://www.google.com/maps/d/embed?mid=1r6vDdBdPn1j8kIdcXsOgTjuo5ts');
+
 
 -- --------------------------------------------------------
 
@@ -87,11 +87,7 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `uid`, `pid`, `trip_id`, `seat_numbers`, `passenger_details`, `total_amount`, `created_at`, `status`) VALUES
-(36, 38, 26, 80, 'P26-T80-A2', '[{\"seat\":\"P26-T80-A2\",\"name\":\"Nenish Jajadiya\",\"age\":\"21\",\"gender\":\"Male\"}]', 14999, '2025-04-14 06:21:01', 1),
-(37, 38, 26, 80, 'P26-T80-A2', '[{\"seat\":\"P26-T80-A2\",\"name\":\"Nenish Jajadiya\",\"age\":\"21\",\"gender\":\"Male\"}]', 14999, '2025-04-14 06:22:23', 0),
-(38, 38, 26, 79, 'P26-T79-A3', '[{\"seat\":\"P26-T79-A3\",\"name\":\"Purv Jajadiya\",\"age\":\"21\",\"gender\":\"Male\"}]', 14999, '2025-04-14 06:33:22', 0),
-(39, 38, 28, 78, 'P28-T78-A3', '[{\"seat\":\"P28-T78-A3\",\"name\":\"Nenish Jajadiya\",\"age\":\"21\",\"gender\":\"Male\"}]', 6999, '2025-04-14 06:38:46', 1);
+
 
 -- --------------------------------------------------------
 
@@ -350,7 +346,7 @@ INSERT INTO `seats` (`seat_id`, `trip_id`, `package_id`, `seat_number`, `status`
 (665, 78, 27, 'P27-T78-A15', 0, 0, NULL, NULL),
 (666, 78, 28, 'P28-T78-A1', 0, 0, NULL, NULL),
 (667, 78, 28, 'P28-T78-A2', 0, 0, NULL, NULL),
-(668, 78, 28, 'P28-T78-A3', 0, 1, NULL, NULL),
+(668, 78, 28, 'P28-T78-A3', 0, 0, NULL, NULL),
 (669, 78, 28, 'P28-T78-A4', 0, 0, NULL, NULL),
 (670, 78, 28, 'P28-T78-A5', 0, 0, NULL, NULL),
 (671, 78, 28, 'P28-T78-A6', 0, 0, NULL, NULL),
@@ -655,10 +651,7 @@ CREATE TABLE `team` (
 -- Dumping data for table `team`
 --
 
-INSERT INTO `team` (`id`, `name`, `picture`) VALUES
-(28, 'Smit Chakrani', 'uploads/1744606220_Screenshot 2025-04-14 101429.png'),
-(29, 'Nenish Jajadiya', 'uploads/1744606239_Screenshot 2025-04-14 101429.png'),
-(30, 'Krunal Kaklotar', 'uploads/1744606253_Screenshot 2025-04-14 101429.png');
+
 
 -- --------------------------------------------------------
 
@@ -719,8 +712,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `address`, `phonenum`, `pincode`, `dob`, `profile`, `password`, `is_verified`, `token`, `token_expire`, `status`, `created_at`, `reset_token`, `token_expiry`) VALUES
-(38, 'Krunal Kaklotar', 'krunalkaklotar2283@gmail.com', '45\r\nVina nagar society katargam', '7069385883', 395004, '2004-12-26', 'IMG_67ef73132b9753.70855498.jpg', '$2y$10$9C2qPzGzra9H35d4ibfkz.wwWUId7IcSEl/X0CrvSwWF9vhmHxppS', 1, NULL, NULL, 1, '2025-04-04 05:50:11', NULL, NULL);
+
 
 --
 -- Indexes for dumped tables

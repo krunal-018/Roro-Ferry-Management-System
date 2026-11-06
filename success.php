@@ -1,4 +1,9 @@
 <?php
+if (getenv('ENABLE_LEGACY_SANDBOX_CHECKOUT') !== '1') {
+    http_response_code(503);
+    exit('Checkout is unavailable in this demo.');
+}
+
 require 'vendor/autoload.php'; // Dompdf
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -188,16 +193,17 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
+    require_once __DIR__ . '/inc/config.php';
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';  // 🔁 Your SMTP host (e.g., smtp.gmail.com)
+    $mail->Host = SMTP_HOST;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'krunalkaklotar2283@gmail.com';     // 🔁 Your SMTP username
-    $mail->Password   = 'zxtqfgkbnqklpito';              // 🔁 Your SMTP password
+    $mail->Username = SMTP_USERNAME;
+    $mail->Password = SMTP_PASSWORD;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Or PHPMailer::ENCRYPTION_SMTPS
-    $mail->Port       = 587; // Or 465 for SSL
+    $mail->Port = SMTP_PORT;
 
     //Recipients
-    $mail->setFrom('krunalkaklotar2283@gmail.com', 'roroferry');
+    $mail->setFrom(SMTP_FROM, SMTP_FROM_NAME);
     $mail->addAddress($email); // 👤 Customer's email
 
     //Attachments
