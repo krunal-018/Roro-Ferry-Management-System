@@ -1,5 +1,9 @@
 # 🚢 Ro-Ro Ferry Management System
 
+### [Open the live Ro-Ro Ferry demo ↗](https://roro-ferry.freedev.app/Roro-Ferry-Management-System-main/Roro-Ferry-Management-System-main/index.php)
+
+The public demo has checkout disabled.
+
 A comprehensive and robust web-based **Ro-Ro (Roll-on/Roll-off) Ferry Ticket Booking and Management System** built using PHP, MySQL, Bootstrap 5, and JavaScript. The system enables passengers to book ferry tickets, select seats, check trip schedules, browse onboard packages/facilities, and pay securely. It also provides a feature-rich Admin Panel for managing trips, bookings, packages, facilities, user queries, and system configurations.
 
 ---
